@@ -1,2 +1,2 @@
 curl -sS https://getcomposer.org/installer | php
-php composer.phar install
+mv composer.phar /usr/local/bin/composer
