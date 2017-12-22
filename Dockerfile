@@ -1,5 +1,7 @@
 FROM ubuntu:16.04
 
+ADD . /usr/local
+
 EXPOSE 80
 
 RUN apt update -y
@@ -56,9 +58,9 @@ RUN sed -i -e "$ a [client]\n\n[mysql]\n\n[mysqld]"  /etc/mysql/my.cnf && \
 	sed -i -e "s/\(\[mysql\]\)/\1\ndefault-character-set = utf8/g" /etc/mysql/my.cnf && \
 	sed -i -e "s/\(\[mysqld\]\)/\1\ninit_connect='SET NAMES utf8'\ncharacter-set-server = utf8\ncollation-server=utf8_unicode_ci\nbind-address = 0.0.0.0/g" /etc/mysql/my.cnf
 
-VOLUME /var/lib/mysql	
-
 RUN service apache2 start
 
 RUN service mysql start
 RUN cat /var/log/mysql/error.log
+
+RUN bash /usr/local/install-phantom-js.sh
