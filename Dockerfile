@@ -69,4 +69,4 @@ RUN bash /usr/local/install-node-js.sh
 
 RUN bash /usr/local/install-composer.sh
 
-mysqladmin -u root
+mysqladmin -u root -proot password '' #Remove rootpass world
