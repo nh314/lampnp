@@ -11,7 +11,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt install -yqq \
     mysql-server \
     mysql-client \
     software-properties-common \
-    python-software-properties
+    python-software-properties \
+    curl
 
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 
@@ -61,6 +62,11 @@ RUN sed -i -e "$ a [client]\n\n[mysql]\n\n[mysqld]"  /etc/mysql/my.cnf && \
 RUN service apache2 start
 
 RUN service mysql start
-RUN cat /var/log/mysql/error.log
 
 RUN bash /usr/local/install-phantom-js.sh
+
+RUN bash /usr/local/install-node-js.sh
+
+RUN bash /usr/local/install-composer.sh
+
+mysqladmin -u root
