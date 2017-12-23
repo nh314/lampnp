@@ -10,8 +10,7 @@ RUN apt update -y
 
 RUN DEBIAN_FRONTEND=noninteractive apt install -yqq \
 	apache2 \
-    mysql-server \
-    mysql-client \
+    mysql-server \    
     software-properties-common \
     python-software-properties \
     curl
@@ -63,6 +62,6 @@ RUN sed -i -e "$ a [client]\n\n[mysql]\n\n[mysqld]"  /etc/mysql/my.cnf && \
 
 RUN service apache2 start
 
-RUN /usr/bin/mysqld_safe
+RUN mysql_install_db
 
-RUN mysql -u root
+RUN service mysql start
