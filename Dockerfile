@@ -6,24 +6,21 @@ ADD . /usr/local
 
 EXPOSE 80
 
-RUN apt-get update -y
-
-RUN apt-get -y dist-upgrade
+RUN apt-get update -y && apt-get -y dist-upgrade
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yqq \
     apache2 \
     mysql-server \    
     software-properties-common \
     python-software-properties \
-    curl
+    curl \
+    git
 
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/apache2
 
-RUN apt-get update
-
-RUN apt-get install -yqq php5.6 \
+RUN apt-get update && apt-get install -yqq php5.6 \
 				php7.0 \
 				php7.1 \
 				php5.6-mbstring \
@@ -44,9 +41,7 @@ RUN apt-get install -yqq php5.6 \
 
 RUN update-alternatives --set php /usr/bin/php5.6
 
-RUN a2dismod php7.1
-
-RUN a2enmod php5.6
+RUN a2dismod php7.1 && a2enmod php5.6
 
 CMD ["echo", "hello"]
 
