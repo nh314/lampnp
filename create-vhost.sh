@@ -26,3 +26,5 @@ mkdir -p /var/www/html/$VHOST_NAME
 mkdir -p /var/www/html/$VHOST_NAME/public_html
 mkdir -p /var/www/html/$VHOST_NAME/log
 mkdir -p /var/www/html/$VHOST_NAME/backups
+a2ensite $1
+service apache2 reload

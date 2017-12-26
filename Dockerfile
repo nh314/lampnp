@@ -8,9 +8,9 @@ EXPOSE 80
 
 RUN apt-get update -y
 
-RUN apt-get -yqq dist-upgrade
+RUN apt-get -y dist-upgrade
 
-RUN DEBIAN_FRONTEND=noninteractive apt install -yqq \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yqq \
     apache2 \
     mysql-server \    
     software-properties-common \
@@ -50,8 +50,8 @@ RUN a2enmod php5.6
 
 CMD ["echo", "hello"]
 
-RUN install-composer.sh
+RUN /bin/bash /usr/local/install-composer.sh
 
-RUN install-node-js.sh
+RUN /bin/bash /usr/local/install-node-js.sh
 
-RUN install-phantom-js.sh
+RUN /bin/bash /usr/local/install-phantom-js.sh

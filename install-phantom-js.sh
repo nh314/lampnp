@@ -1,4 +1,5 @@
 #!/bin/bash
+PHANTOM_JS="phantomjs-1.9.8-linux-x86_64"
 apt-get install -yqq build-essential chrpath libssl-dev libxft-dev 
 apt-get install -yqq libfreetype6 libfreetype6-dev
 apt-get install -yqq libfontconfig1 libfontconfig1-dev
