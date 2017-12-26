@@ -8,7 +8,7 @@ EXPOSE 80
 
 RUN apt-get update -y
 
-RUN apt-get dist-upgrade -y
+RUN apt-get -yqq dist-upgrade
 
 RUN DEBIAN_FRONTEND=noninteractive apt install -yqq \
     apache2 \
