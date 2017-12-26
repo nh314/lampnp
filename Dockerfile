@@ -9,7 +9,7 @@ EXPOSE 80
 RUN apt update -y
 
 RUN DEBIAN_FRONTEND=noninteractive apt install -yqq \
-	apache2 \
+    apache2 \
     mysql-server \    
     software-properties-common \
     python-software-properties \
@@ -61,7 +61,3 @@ RUN sed -i -e "$ a [client]\n\n[mysql]\n\n[mysqld]"  /etc/mysql/my.cnf && \
 	sed -i -e "s/\(\[mysqld\]\)/\1\ninit_connect='SET NAMES utf8'\ncharacter-set-server = utf8\ncollation-server=utf8_unicode_ci\nbind-address = 0.0.0.0/g" /etc/mysql/my.cnf
 
 RUN service apache2 start
-
-RUN mysqld --initialize-insecure
-
-RUN service mysql start
