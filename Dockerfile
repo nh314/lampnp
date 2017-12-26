@@ -62,6 +62,6 @@ RUN sed -i -e "$ a [client]\n\n[mysql]\n\n[mysqld]"  /etc/mysql/my.cnf && \
 
 RUN service apache2 start
 
-RUN mysql_install_db
+RUN mysqld --initialize-insecure
 
 RUN service mysql start
